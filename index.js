@@ -17,6 +17,7 @@ buttonFile.addEventListener('click', () => inputFile.click());
 dropArea.addEventListener('drop', (e) => {
     e.preventDefault();
 
+    imageDrop();
 
     dragText.textContent = ResetTextAreaDrop;
 })
@@ -26,3 +27,8 @@ dropArea.addEventListener('dragleave', (e) => {
 
     dragText.textContent = ResetTextAreaDrop;
 })
+
+
+function imageDrop(){ 
+    
+}
