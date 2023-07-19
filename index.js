@@ -4,6 +4,9 @@ const buttonFile = document.getElementById('buttonFile');
 const inputFile = document.getElementById('inputFile');
 
 const ResetTextAreaDrop = "Drag & drop your image here";
+let files;
+
+buttonFile.addEventListener('click', () => inputFile.click());
 
 dropArea.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -11,24 +14,66 @@ dropArea.addEventListener('dragover', (e) => {
     dragText.textContent = "Drop file";
 })
 
-buttonFile.addEventListener('click', () => inputFile.click());
 
+dropArea.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    dropArea.classList.remove("active");
+    dragText.textContent = ResetTextAreaDrop;
+})
 
 dropArea.addEventListener('drop', (e) => {
     e.preventDefault();
 
-    imageDrop();
+    files = e.dataTransfer.files;
+    showFiles(files)
 
+    dropArea.classList.remove("active");
     dragText.textContent = ResetTextAreaDrop;
 })
 
-dropArea.addEventListener('dragleave', (e) => {
-    e.preventDefault();
+function showFiles(files) {
+    if (files.length === undefined) {
+        imageDrop(files);
+    }
+    else {
+        for (const file of files) {
+            imageDrop(file)
+        }
+    }
+}
 
-    dragText.textContent = ResetTextAreaDrop;
-})
+function imageDrop(files) {
+    const docType = files.type;
+    const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    if (validExtensions.includes(docType)) {
 
+        const fileReader = new FileReader();
+        const id = `file-${Math.random().toString(32).substring(7)}`;
 
-function imageDrop(){ 
-    
+        fileReader.addEventListener('load', (e) => {
+            const fileUrl = fileReader.result;
+            const image = `
+            <div id="${id}" class="file-container">
+            <img src="${fileUrl}" alt="${file.name}" width="50px">
+            <div class="status">
+            <span>${file.name}</span>
+            <span class ="status-text"> loading... </span>
+            </div>
+            </div>
+            `;
+
+            const html = document.querySelector("#preview").innerHTML;
+            document.querySelector("#preview").innerHTML = image + html;
+            
+        });
+    fileReader.readAsDataURL(file);
+    uploadFile(file,id);
+    }
+    else {
+        alert("No es archivo valido")
+    }
+}
+
+function uploadFile(file){ 
+
 }
