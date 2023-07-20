@@ -42,8 +42,8 @@ function showFiles(files) {
     }
 }
 
-function imageDrop(files) {
-    const docType = files.type;
+function imageDrop(file) {
+    const docType = file.type;
     const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
     if (validExtensions.includes(docType)) {
 
@@ -74,6 +74,23 @@ function imageDrop(files) {
     }
 }
 
-function uploadFile(file){ 
+async function uploadFile(file){ 
+    const formData = new FormData();
 
+    formData.append("file",file);
+
+    try{
+        const response = await fetch("http://localhost:3000/upload" ,{ 
+            method: "POST",
+            body: formData,
+        });
+        const responseText = await response.text();
+        console.log(responseText);
+        document.querySelector(`#${id} .status-text`).innerHTML = `<span class="success"> Archivo subido </span>`;
+    }
+    catch(error){
+        document.querySelector(`#${id} .status-text`).innerHTML = `<span class="failure"> Archivo subido </span>`;
+  
+
+    }; 
 }
