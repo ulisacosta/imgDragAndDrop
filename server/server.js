@@ -13,7 +13,7 @@ app.use(express.json());
 app.post("/upload",(req,res)=>{
     console.log(req.files.file);
     res.send(`${req.files.file.name}`)
-
+    
     /* fileUpload.mv(req.files.file.) */
 })
 

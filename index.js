@@ -53,44 +53,47 @@ function imageDrop(file) {
         fileReader.addEventListener('load', (e) => {
             const fileUrl = fileReader.result;
             const image = `
-            <div id="${id}" class="file-container">
+            <div id="${id}" class="container">
             <img src="${fileUrl}" alt="${file.name}" width="50px">
-            <div class="status">
+            <div class="bg-red-50">
             <span>${file.name}</span>
-            <span class ="status-text"> loading... </span>
+            
             </div>
             </div>
             `;
 
             const html = document.querySelector("#preview").innerHTML;
             document.querySelector("#preview").innerHTML = image + html;
-            
+
         });
-    fileReader.readAsDataURL(file);
-    uploadFile(file,id);
+        fileReader.readAsDataURL(file);
+        uploadFile(file, id);
     }
     else {
         alert("No es archivo valido")
     }
 }
 
-async function uploadFile(file){ 
+async function uploadFile(file) {
     const formData = new FormData();
 
-    formData.append("file",file);
+    formData.append("file", file);
 
-    try{
-        const response = await fetch("http://localhost:3000/upload" ,{ 
+    try {
+        const response = await fetch("http://localhost:3000/upload", {
             method: "POST",
             body: formData,
         });
         const responseText = await response.text();
         console.log(responseText);
-        document.querySelector(`#${id} .status-text`).innerHTML = `<span class="success"> Archivo subido </span>`;
-    }
-    catch(error){
-        document.querySelector(`#${id} .status-text`).innerHTML = `<span class="failure"> Archivo subido </span>`;
-  
 
-    }; 
+        
+        document.querySelector('#buttonFile').textContent = svg + successfull
+ 
+    }
+    catch (error) {
+        document.querySelector(`#${id} .bg-red-50`).innerHTML = `<span class="bg-red-500"> Archivo no subido </span>`;
+
+
+    };
 }
