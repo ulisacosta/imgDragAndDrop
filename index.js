@@ -84,15 +84,24 @@ async function uploadFile(file) {
             method: "POST",
             body: formData,
         });
-        const responseText = await response.text();
-        console.log(responseText);
-
+      /*   const responseText = await response.text();
+        console.log(responseText); */
+        const responses = await response.arrayBuffer();
+        console.log(responses);
         
-        document.querySelector('#buttonFile').textContent = svg + successfull
- 
+        for(let i = 0; responses.byteLength > i ; i++){
+            const divBuffer = document.createElement('div');
+            const pBuffer = document.createElement('p');
+            document.appendChild(pBuffer);
+           document.querySelector('.btnSpan').textContent = i
+           
+        }
+        
+      /*   document.querySelector('.btnSpan').textContent =  "successfull" + responses.maxByteLength 
+  */
     }
     catch (error) {
-        document.querySelector(`#${id} .bg-red-50`).innerHTML = `<span class="bg-red-500"> Archivo no subido </span>`;
+        document.querySelector('.btnSpan').innerHTML = `<span class="bg-red-500"> Archivo no subido </span>`;
 
 
     };
