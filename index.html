@@ -108,15 +108,23 @@
                 <form action="" class="flex justify-center items-center flex-col">
                     <button class="bg-indigo-500 rounded-full p-3 " id="buttonFile">
                         <span class="btnSpan">
-                        Choose a file
-                    </span>
-                </button>
+                            Choose a file
+                        </span>
+                    </button>
                     <input type="file" name="file" id="inputFile" hidden />
                 </form>
             </div>
         </div>
 
         <div id="preview"></div>
+        <!-- Coloca el siguiente div en el lugar donde quieras mostrar el spinner -->
+        <div id="spinner" class="spinner" style="display: none;" aria-label="Loading"> <svg
+                class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                <path
+                    d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+            </svg>
+        </div>
+
     </main>
 
     <script src="index.js"></script>

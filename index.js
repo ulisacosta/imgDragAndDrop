@@ -78,32 +78,30 @@ async function uploadFile(file) {
     const formData = new FormData();
 
     formData.append("file", file);
-
+    document.getElementById('spinner').style.display = 'block';
     try {
         const response = await fetch("http://localhost:3000/upload", {
             method: "POST",
             body: formData,
         });
-      /*   const responseText = await response.text();
-        console.log(responseText); */
+        /*   const responseText = await response.text();
+          console.log(responseText); */
         const responses = await response.arrayBuffer();
         console.log(responses);
-        
-     for(let i = 0 ; i <= responses.byteLength  ; i++){ 
-        
-           document.querySelector('button').innerHTML = 
-           `<button type="button" class="bg-indigo-500 ..." disabled>
-           <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-           <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
-           </svg>
-           Processing...
-         </button>`; 
-            console.log(i);
-        
-        }
-         
-         document.querySelector('button').innerHTML =  "successfull" 
-  
+        for (let i = 0; i <= responses.byteLength; i++) {
+            
+       /*      document.querySelector('button').innerHTML =
+            `<button type="button" class="bg-indigo-500 ..." disabled>
+            <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+            <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+            </svg>
+            Processing...
+            </button>`;
+            console.log(i); */
+            
+            document.getElementById('spinner').style.display = 'none';
+        } 
+
     }
     catch (error) {
         document.querySelector('.btnSpan').innerHTML = `<span class="bg-red-500"> Archivo no subido </span>`;
