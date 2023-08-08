@@ -13,7 +13,7 @@
 
 <body class="bg-slate-100 flex  justify-center items-center h-screen w-screen">
 
-    <main class="h-3/4 w-5/12 flex flex-col justify-center items-center rounded-lg border">
+    <main id="main" class="h-3/4 w-5/12 flex flex-col justify-center items-center rounded-lg border">
 
 
         <div class="flex justify-center items-center" id="dropZone" ondrop="dropHandler(event);">
@@ -99,6 +99,7 @@
 
             <h2 class="dragText">Drag & drop your image here </h2>
         </div>
+
         <div class="h-4/4 w-4/4 flex justify-center items-center flex-col">
             <div>
                 <p>Or</p>
@@ -116,16 +117,24 @@
             </div>
         </div>
 
-        <div id="preview"></div>
-        <!-- Coloca el siguiente div en el lugar donde quieras mostrar el spinner -->
+
+    </main>
+
+    <main id="loader" class="hidden h-3/4 w-5/12 flex flex-col justify-center items-center rounded-lg border">
+
+    <section class="flex h-3/4 w-5/12  justify-center items-center" >
+        
+        <div id="preview" class="flex justify-center items-center"></div>
+        
         <div id="spinner" class="spinner" style="display: none;" aria-label="Loading"> <svg
                 class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
                 <path
                     d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
             </svg>
         </div>
-
-    </main>
+    </section>
+</main>
+    
 
     <script src="index.js"></script>
 
