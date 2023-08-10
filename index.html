@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Uploader</title>
-
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -22,7 +22,7 @@
         ondrop="dropHandler(event)"
       >
         <div class="w-full h-full">
-          <h1>Upload your image</h1>
+          <h1 class="font-semibold">Upload your image</h1>
 
           <h2>File should be JPG,PNG...</h2>
         </div>
@@ -138,9 +138,11 @@
         </div>
         <div>
           <form action="" class="flex justify-center items-center flex-col">
-            <button class="bg-indigo-500 rounded-full p-3" id="buttonFile">
-              <span class="btnSpan"> Choose a file </span>
-            </button>
+          
+            <a class="bg-blue-700 hover:bg-blue-900 rounded-2xl p-3 cursor-pointer" id="buttonFile">
+              <span class="btnSpan text-white"> Choose a file </span>
+            </a>
+       
             <input type="file" name="file" id="inputFile" hidden />
           </form>
         </div>
@@ -151,7 +153,7 @@
       id="loader"
       class="hidden h-3/4 w-5/12 flex flex-col justify-center items-center rounded-lg border"
     >
-      <section class=" h-full w-full flex flex-col justify-center items-center">
+      <section class="h-full w-full flex flex-col justify-center items-center">
         <div
           id="spinner"
           class="spinner flex justify-center items-center"
@@ -164,8 +166,10 @@
             />
           </svg>
         </div>
-        <div id="preview" class="w-full flex flex-col justify-center items-center"></div>
-        
+        <div
+          id="preview"
+          class="w-full flex flex-col justify-center items-center"
+        ></div>
       </section>
     </main>
 

@@ -8,6 +8,11 @@ let files;
 
 buttonFile.addEventListener("click", () => inputFile.click());
 
+inputFile.addEventListener("change", (e) => {
+  files = e.target.files[0];
+  showFiles(files);
+});
+
 dropArea.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropArea.classList.add("active");
@@ -53,15 +58,22 @@ function imageDrop(file) {
     fileReader.addEventListener("load", (e) => {
       const fileUrl = fileReader.result;
       const image = `
-        <div class="hidden  imageUpload flex flex-col justify-center items-center">      
-      <div id="${id}" class="  ">
+        <div class="hidden imageUpload flex flex-col justify-center items-center gap-1">      
+      <div id="${id}" class="">
             <img src="${fileUrl}" alt="${file.name}" width="100px" height="100px" class="">
             </div>
-            <div class="bg-red-50">
-            <input class="w-full h-2/6 p-4" id="inputUrl" type="text" value="${file.name}" readonly> 
-            <button id="copyButton" onClick="copyButton('${fileUrl}')">copy</button>
-            
+            <div class="w-full ">
+            <input class="rounded-lg h-1/6  p-4" id="inputUrl" type="text" value="${fileUrl}" readonly> 
             </div>
+            <div class="w-full text-center">
+            <button class="w-6/12 rounded-md bg-blue-700 text-white hover:bg-blue-900 " id="copyButton" onClick="copyButton('${fileUrl}')">Copy link</button>
+            </div>
+            
+            <div class="w-full text-center">
+            <a class="w-full rounded-md bg-blue-700 text-white hover:bg-blue-900 " href="index.html">Volver</button>
+            </div>
+
+
             </div>
             `;
 
