@@ -17,6 +17,11 @@ app.post("/upload",(req,res)=>{
     /* fileUpload.mv(req.files.file.) */
 })
 
+app.get("/",(req,res)=>{
+
+})
+
+
 app.set('port', port);
 
 app.listen(app.get('port'), () =>{ 
