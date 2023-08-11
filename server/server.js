@@ -9,14 +9,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Configura la carpeta de archivos estáticos (por ejemplo, donde se encuentra index.html)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(fileUpload());
 app.use(cors());
 app.use(express.json());
 
 app.get('*', (req, res) => {
-    res.sendFile('index');
+    res.sendFile(path.join(__dirname, '/index.html'));
   });
 
   app.post("/upload",(req,res)=>{
