@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('*', (req, res) => {
-    res.sendFile('index.html');
+    res.sendFile('index');
   });
 
   app.post("/upload",(req,res)=>{
