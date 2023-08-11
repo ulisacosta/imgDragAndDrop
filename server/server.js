@@ -15,7 +15,11 @@ app.use(fileUpload());
 app.use(cors());
 app.use(express.json());
 
-app.post("/upload",(req,res)=>{
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+
+  app.post("/upload",(req,res)=>{
     console.log(req.files.file);
     res.send(`${req.files.file.name}`)
     
