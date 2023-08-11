@@ -2,6 +2,8 @@
 const express = require('express')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
+const path = require('path');
+
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -17,10 +19,14 @@ app.post("/upload",(req,res)=>{
     /* fileUpload.mv(req.files.file.) */
 })
 
-app.get("/",(req,res)=>{
 
-})
+// Configura la carpeta de archivos estáticos (por ejemplo, donde se encuentra index.html)
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Ruta para manejar todas las solicitudes, devolviendo el archivo index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.set('port', port);
 
