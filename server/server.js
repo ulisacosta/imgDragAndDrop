@@ -23,10 +23,7 @@ app.post("/upload",(req,res)=>{
 // Configura la carpeta de archivos estáticos (por ejemplo, donde se encuentra index.html)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta para manejar todas las solicitudes, devolviendo el archivo index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public','index.html'));
-});
+
 
 app.set('port', port);
 
