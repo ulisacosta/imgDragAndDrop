@@ -11,6 +11,7 @@ buttonFile.addEventListener("click", () => inputFile.click());
 inputFile.addEventListener("change", (e) => {
   files = e.target.files[0];
   showFiles(files);
+  inputFile.value = null
 });
 
 dropArea.addEventListener("dragover", (e) => {
