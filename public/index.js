@@ -70,7 +70,7 @@ function imageDrop(file) {
             </div>
             
             <div class="w-full text-center">
-            <a class="w-full rounded-md bg-blue-700 text-white hover:bg-blue-900 " href="index.html">Volver</button>
+            <a class="w-full rounded-md bg-blue-700 text-white hover:bg-blue-900 " href="/">Volver</button>
             </div>
 
 
